@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/chat.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<label for="sender-id">Sender ID</label> <input type="text"
+				class="form-control" id="sender-id"> <label
+				for="receiver-id">Receiver ID</label> <input type="text"
+				class="form-control" id="receiver-id"> <label for="content">Message</label>
+			<input type="text" class="form-control" id="content">
+			<button type="button" id="send-btn" class="btn btn-default">Send</button>
+		</div>
+	</div>
+	<div style="float: left">
+		<ul class="users">
+		</ul>
+	</div>
+	<div class="panel panel-default" style="float: right">
+		<ul class="list-group">
+		</ul>
+	</div>
+	<div style="display: inline-block">
+		<button type="button" class="btn btn-success" id="delete-all-btn">Delete
+			All Messages</button>
+
+
+	</div>
+
+
+</body>
+</html>
