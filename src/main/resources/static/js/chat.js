@@ -14,9 +14,15 @@ var CHAT = (function(chat){
         getMessagesFromRemote();
         deleteAllMessages();
     };
+    
 
     function displayAllMessages(){
         $.get('message', function( data ) {
+        	
+        	data.sort(function(a,b){
+        		return a.created - b.created
+        	});
+        	
             for(var i=0;i<data.length;i++){
                 appendMessage(data[i]);
             }
@@ -35,13 +41,32 @@ var CHAT = (function(chat){
                 senderId: $('#sender-id').val(),
                 receiverId: $('#receiver-id').val(),
                 body: $('#content').val()
+              
             };
-            $.post('message', JSON.stringify(message), function(data){
-                console.log('message successfully sent ' + JSON.stringify(data));
-//                appendMessage(data);
-            }, 'json');
+            $.get('api/users', function( data ) {
+            	var found1 = $.inArray(message.senderId, data);
+            	var found2 = $.inArray(message.receiverId, data);
+            	if(found1>0 && found2>0 ){
+            		$.post('message', JSON.stringify(message), function(data){
+                        console.log('message successfully sent ' + JSON.stringify(data));
+                        appendMessage(data);
+                    }, 'json');
+            		
+            		
+            	}else{
+            		alert("Wprowadz poprawnych uzytwkonikow")
+            		 
+            	}
+            });
+            $('#sender-id').val("");
+            $('#receiver-id').val("");
+            $('#content').val("");
+           
         });
+       
+        
     };
+    
     function autoCompleteSender(){
     	$(function () {
     	   

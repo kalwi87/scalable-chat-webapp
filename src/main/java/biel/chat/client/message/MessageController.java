@@ -29,8 +29,8 @@ public class MessageController {
     public Message createIncoming(@RequestBody Message message){
     	
     	message.setCreated(new Date());
-    	mssageRemoteService.postMessageToRemote(message);
-    	return messageService.create(message);
+    	return mssageRemoteService.postMessageToRemote(message);
+    	
     	
     }
     @GetMapping("/remote")
@@ -49,6 +49,12 @@ public class MessageController {
     @GetMapping("/delete")
     public int deleteAllFromMessages(){
 		return messageService.deleteAll();
+    	
+    }
+    @GetMapping("delete/{id}")
+    public int deleteUserById(@PathVariable("id") String userId){
+    	return messageService.delete(userId);
+		
     	
     }
 }

@@ -30,5 +30,17 @@ public class MessageRepository {
     	return em.createNativeQuery("DELETE FROM MESSAGE").executeUpdate();
     }
 
+	public int delete(String userId) {
+		List<Message> allMessages = findAll();
+		for(Message item : allMessages){
+			if(item.getMessageId().equals(userId)){
+				em.remove(item);
+				return 1;
+			}
+		}
+		return 0;
+		
+	}
+
 
 }

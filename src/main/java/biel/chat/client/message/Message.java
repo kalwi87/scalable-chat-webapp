@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * Created by wilk.wojtek@gmail.com.
- */
+
 @Entity
 public class Message {
     @Id
@@ -17,6 +15,11 @@ public class Message {
     private Date created;
     private String senderId;
     private String receiverId;
+    private String messageId;
+    
+    public String getMessageId(){
+    	return messageId;
+    }
 
     public String getBody() {
         return body;

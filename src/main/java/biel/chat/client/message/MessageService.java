@@ -27,4 +27,9 @@ public class MessageService {
     	return messageRepository.deleteAllMessages();
     }
 
+	public int delete(String userId) {
+		return messageRepository.delete(userId);
+		
+	}
+
 }

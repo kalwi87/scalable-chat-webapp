@@ -26,45 +26,45 @@ import static org.assertj.core.api.Assertions.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MessageServiceTest {
 
-//    @Autowired
-//    MessageService messageService;
-//    @Autowired
-//    EntityManager entityManager;
-//
-//    @Test
-//    public void should_create_messages(){
-//        Message message = new Message();
-//        message.setContent("content");
-//        message.setCreated(new Date());
-//        message.setSenderId("senderId");
-//        message.setReceiverId("receiverId");
-//
-//        messageService.create(message);
-//
-//        Message persisted = entityManager.find(Message.class, message.getId());
-//        assertThat(persisted.getCreated()).isEqualTo(message.getCreated());
-//        assertThat(persisted.getContent()).isEqualTo(message.getContent());
-//        assertThat(persisted.getSenderId()).isEqualToIgnoringCase(message.getSenderId());
-//        assertThat(persisted.getReceiverId()).isEqualTo(message.getReceiverId());
-//    }
-//
-//    @Test
-//    public void should_find_all_messages(){
-//        Message in = new Message();
-//        in.setContent("content");
-//        in.setCreated(new Date());
-//        in.setSenderId("senderId");
-//
-//        Message out = new Message();
-//        out.setContent("content");
-//        out.setCreated(new Date());
-//        out.setReceiverId("receiverId");
-//
-//        entityManager.persist(in);
-//        entityManager.persist(out);
-//
-//        List<Message> all = messageService.findAll();
-//
-//        assertThat(all).contains(in, out);
-//    }
+    @Autowired
+    MessageService messageService;
+    @Autowired
+    EntityManager entityManager;
+
+    @Test
+    public void should_create_messages(){
+        Message message = new Message();
+        message.setBody("content");
+        message.setCreated(new Date());
+        message.setSenderId("senderId");
+        message.setReceiverId("receiverId");
+
+        messageService.create(message);
+
+        Message persisted = entityManager.find(Message.class, message.getId());
+        assertThat(persisted.getCreated()).isEqualTo(message.getCreated());
+        assertThat(persisted.getBody()).isEqualTo(message.getBody());
+        assertThat(persisted.getSenderId()).isEqualToIgnoringCase(message.getSenderId());
+        assertThat(persisted.getReceiverId()).isEqualTo(message.getReceiverId());
+    }
+
+    @Test
+    public void should_find_all_messages(){
+        Message in = new Message();
+        in.setBody("content");
+        in.setCreated(new Date());
+        in.setSenderId("senderId");
+
+        Message out = new Message();
+        out.setBody("content");
+        out.setCreated(new Date());
+        out.setReceiverId("receiverId");
+
+        entityManager.persist(in);
+        entityManager.persist(out);
+
+        List<Message> all = messageService.findAll();
+
+        assertThat(all).contains(in, out);
+    }
 }
